@@ -13,40 +13,30 @@ let getAllTestData = (req, res) => {
   });
 };
 
-// let getAllStudents = (req, res) => {
-//   console.log("getall student routes calling");
-//   let studentInfo = new Students({});
-//   studentInfo.getAllStudentList(req).then(studentRes => {
-//     // res.sendStatus(200);
-//     console.log("student res router ::", studentRes);
-//     res.json(studentRes);
-//   });
-// };
-// let getMyData = (req, res) => {
-//   console.log("getall student routes calling");
-//   let studentInfo = new Students({});
-//   console.log("getMyData :req::", req.headers);
-//   studentInfo.getMyData(req).then(studentRes => {
-//     // res.sendStatus(200);
-//     console.log("student res router ::", studentRes);
-//     res.json(studentRes);
-//   });
-// };
 
-// let addData = (req, res) => {
-//   console.log("addData routes calling");
-//   let studentInfo = new Students({});
-//   console.log("addData :req::", req.headers);
-//   studentInfo.addData(req).then(addedRes => {
-//     // res.sendStatus(200);
-//     console.log("add data router ::", addedRes);
-//     res.json(addedRes);
-//   });
-// };
+let getAll = (req, res) => {
+  console.log("getall routes calling");
+  let controller = new bloodBankController({});
+  console.log("getA;; :req::", req.headers);
+  controller.getAll(req).then(getRes => {
+    console.log("res router ::", getRes);
+    res.json(getRes);
+  });
+};
 
-//studentRoutes.post("/getAll", getAllStudents);
-// studentRoutes.post("/getAllSavings", getMyData);
-// studentRoutes.post("/addSavings", addData);
+let addData = (req, res) => {
+  console.log("addData routes calling");
+  let controller = new bloodBankController({});
+  console.log("addData :req::", req.headers);
+  controller.addData(req).then(addedRes => {
+    // res.sendStatus(200);
+    console.log("add data router ::", addedRes);
+    res.json(addedRes);
+  });
+};
+
+bloodBankRoutes.get("/getAll", getAll);
+bloodBankRoutes.post("/save", addData);
 
 bloodBankRoutes.post("/getTestData", getAllTestData);
 
