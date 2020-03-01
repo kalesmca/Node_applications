@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import config from './config.json';
 
 import bloodBankRoutes from "./modules/blood_bank/bloodBankRoutes";
+import budgetRoutes from "./modules/budget/budgetRoutes";
 
 
 let app = express();
@@ -28,6 +29,7 @@ app.server.listen(process.env.PORT || config.port, () => {
 });
 
 app.use("/bloodBank", bloodBankRoutes);
+app.use("/budget", budgetRoutes)
 
 
 export default app;
