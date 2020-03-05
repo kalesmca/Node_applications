@@ -13,7 +13,7 @@ export default class BudgetController {
           console.log("error comming");
           res.send(err);
         }
-        resolve({ status: "getALL Success", data: { data: res } });
+        resolve({ status: "Success", data: { data: res } });
       });
     });
   };
@@ -26,8 +26,24 @@ export default class BudgetController {
           console.log("error comming");
           res.send(err);
         }
-        resolve({ status: "AddData Success", data: { data: res } });
+        resolve({ status: "Success", data: { data: res } });
       });
     });
   };
+
+  getDataByQuery = req => {
+    let query = req.body;
+    console.log("getDataByQuery: query :: ", query);
+    return new Promise((resolve, reject) => {
+      db.budget_entry_list.find(query, function (err, res) {
+        if (err) {
+          console.log("error comming");
+          res.send(err);
+        }
+        resolve({ status: "Success", data: { data: res } });
+      });
+    });
+  };
+
+
 }
